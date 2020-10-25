@@ -41,9 +41,46 @@
         </div>
       </div>
     </div>
+  <div>
+   <label><span>&nbsp;</span><input type="submit" v-on:click.prevent="generateprofile()" value="Submit" />
+      </label>
+      </div>
+<p>{{User.ename}}</p>
+<p>{{User.about}}</p>
   </section>
 </template>
 
+<script>
+import Headers from "../components/Header.vue";
+import axios from 'axios';
+import {Router} from "vue-router";
+
+export default {
+  components: {
+    Headers,
+  },
+   name: 'use4',
+    data(){
+        return{
+            User: [],
+            id:this.$route.query.id
+            
+        }
+    },
+methods:{
+  generateprofile:function(id)
+  {
+    axios.get('http://localhost:3000/api/users?id=' +id).then((response)=>{
+    console.log(response.data);
+    this.User = response.data;
+    })
+    .catch((error)=>{
+        console.log(error);
+    })
+  }
+  }
+};
+</script>
 
 
 <style>
