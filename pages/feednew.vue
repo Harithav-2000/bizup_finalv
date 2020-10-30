@@ -17,7 +17,7 @@
               <div class="card" style="width:100%;margin-top:60%;">
                 <button class="optbtns" @click="gotoprofile">View my Profile</button>
                 <!--<button class="optbtns" @click="gotorequests">View new requests</button>-->
-                <!--<button class="optbtns" @click="gotochats">View contacts</button>-->
+                <button class="optbtns" @click="gotochats">View contacts</button>
                 <div>
                   <h4>Requests for you</h4>
                   <div v-for="u in User">
@@ -101,6 +101,9 @@ axios.get('http://localhost:3000/api/users?category=' + search).then((response)=
 
 gotoprofile(){
   location.replace(`/profile?id=${this.id}`);
+},
+gotochats(){
+  location.replace(`/chat?id=${this.id}`);
 },
 sendreq:function(sender,receive){
      
